@@ -4,9 +4,7 @@ import './App.css'
 function App() {
   return (
     <section>
-    <main id="main">
     <Form />
-    </main>
     </section>
   )
 }

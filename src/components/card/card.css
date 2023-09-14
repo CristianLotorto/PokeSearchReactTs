@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./assets/img/fondito.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.full-screen{
+    height: 100vh;
+}
 .container{
     position: flex;
     border: black solid 1px;
@@ -104,6 +116,11 @@
     margin: 15px 0;
 }
 @media(max-width: 400px){
+    #main{
+        background-image: url(./assets/img/fondoMobile.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     .container{
         width: 270px;
 

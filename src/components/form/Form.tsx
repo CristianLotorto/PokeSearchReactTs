@@ -7,6 +7,7 @@ import './form.css'
 const Form = () => {
 
     const [nameOrId, setNameOrId] = useState<string | null>('');
+    const [requestMade, setRequestMade] = useState<boolean>(false)
     const [pokemon, setPokemon] = useState({
         id: '',
         pokeName: '',
@@ -42,6 +43,7 @@ const Form = () => {
     const handleSubmit = (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         pokeRequest();
+        setRequestMade(true);
     }
 
     const handleOnChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
@@ -56,27 +58,29 @@ const Form = () => {
     }
 
   return (
-    <>
-    <form action="submit" onSubmit={handleSubmit}>
+    <main id="main" className={requestMade ? "" : "full-screen"}>
+        <form action="submit" onSubmit={handleSubmit}>
 
-    <h1>PokeSearch!</h1>
+        <h1>PokeSearch!</h1>
 
-    <div className="label">
-    <label className={labelAnimation ?? ''} htmlFor="name" id="name-label">Pokemon Name or ID</label>
-    <input type="search" onFocus={() => setLabelAnimation('label-translate-top')} onBlur={handleBlur} list="pokemons" value={nameOrId ?? ''} onChange={handleOnChange} id="name" name="name" className="input" autoComplete="on" />
-    {
-        <datalist id="pokemons">
-            {pokeNames.map((pokeName, index) => <option key={index} value={pokeName}>{pokeName}</option>)}
-        </datalist>
-    }
+        <div className="label">
+        <label className={labelAnimation ?? ''} htmlFor="name" id="name-label">Pokemon Name or ID</label>
+        <input type="search" onFocus={() => setLabelAnimation('label-translate-top')} onBlur={handleBlur} list="pokemons" value={nameOrId ?? ''} onChange={handleOnChange} id="name" name="name" className="input" autoComplete="on" />
+        {
+            <datalist id="pokemons">
+                {pokeNames.map((pokeName, index) => <option key={index} value={pokeName}>{pokeName}</option>)}
+            </datalist>
+        }
 
-    </div>
-    <div className="error" id="name-error"></div>
+        </div>
+        <div className="error" id="name-error"></div>
 
-    <button id="getPokemon">Search!</button>
-</form>
-<Card pokemon={pokemon} />
-</>
+        <button id="getPokemon">Search!</button>
+        </form>
+        {requestMade &&
+        <Card pokemon={pokemon} />
+        }
+    </main>
   )
 }
 
