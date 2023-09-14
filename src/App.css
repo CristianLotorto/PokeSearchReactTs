@@ -1,0 +1,17 @@
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./assets/img/fondito.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media(max-width:400px) {
+    #main{
+        background-image: url(./assets/img/fondoMobile.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
